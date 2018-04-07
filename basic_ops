@@ -1,0 +1,42 @@
+#!/usr/bin/bash
+echo "Using Basic Operators in Shell"
+
+#Arithmetic Operators
+#All of these operations need to be done using: $((expression))
+
+A=3
+B=$((100 * $A + 5)) #305
+echo "100 * 3 + 5 = $B"
+
+#Basic operations are:
+A=6
+B=2
+echo "A=$A"
+echo "B=$B"
+
+#Addition
+C=$(($A+$B))
+echo "Addition: C = A + B = $C"		#8
+
+#Subtraction
+C=$(($A-$B))
+echo "Subtraction: C = A - B = $C"	#4
+
+#Multiplication
+C=$(($A*$B))
+echo "Multiplication: C = A * B = $C"	#12
+
+#Division
+C=$(($A/$B))
+echo "Division: C = A / B = $C"		#3
+
+#Modulo or Mod 
+#Aka checks left over of a division
+C=$(($A%$B))
+echo "Modulo: C = A % B = $C" 		#0
+
+#Exponentiation
+C=$(($A**$B))
+echo "Exponentiation: C = A ** B = $C"	#36
+
+

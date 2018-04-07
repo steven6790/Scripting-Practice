@@ -1,0 +1,23 @@
+#!/usr/bin/bash
+
+my_array=(apple banana "Fruit Basket" orange)
+new_array[2]=apricot
+
+#to check total num of elements in an array use 
+# ${#arrayname[@]}
+echo "Total of number of elements is: ${#my_array[@]}"
+echo "Elements in my_array: ${my_array[@]}"
+
+#to access array elements can be accessed with index vals, first elem is 0
+# ${my_array[0]}
+echo "Elem at index 2 is: ${my_array[2]}"
+
+#You can even add another element to the array!
+my_array[4]="carrot"
+echo "Adding ${my_array[${#my_array[@]}-1]} to my_array"
+echo "Array size is now ${#my_array[@]}"
+
+#Print all elem in an array by:
+echo "Elements in my_array: ${my_array[@]}"
+
+

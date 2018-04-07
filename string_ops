@@ -1,0 +1,57 @@
+#!/usr/bin/bash
+echo Basic String Operations
+
+STRING="this is a string"
+echo ${STRING}
+echo "Length of STRING is: ${#STRING}"		#16
+
+#Index - Find the numerical position in $STRING of any character in 
+# $SUBSTRING that matches. 
+# The 'expr' command is uesd in this case
+SUBSTRING="hat"
+expr index "$STRING" "$SUBSTRING"	# 1 is the position of the first 't' in $STRING
+
+#Substring Extraction - Extract substring of Length $LEN from $STRING starting after position $POS
+# Note: first position is 0
+POS=1
+LEN=3
+echo ${STRING:$POS:$LEN}	# his
+
+#If :$LEN is omitted then the string is extracted from $POS to end of line.
+echo ${STRING:1}	# $STRING contents w/o leading char
+echo ${STRING:12}	# ring
+
+#Simple Data Extraction example - Code to extract the first name from data record
+DATARECORD="last=Clifford,first=Johnny Boy,state=CA"
+COMMA=`expr index "$DATARECORD" ','`	# 14 position of first comma
+CHOP1FIELD=${DATARECORD:$COMMA}
+COMMA2=`expr index "$CHOP1FIELD" ','`
+LENGTH=`expr $COMMA2 - 6 - 1`
+FIRSTNAME=${CHOP1FIELD:6:$LENGTH}
+echo $FIRSTNAME
+
+#Substring Replacement
+#Replace first occurence of substring with replacement
+STRING="to be or not to be"
+echo ${STRING[@]/be/eat}	# to eat or not to be
+
+#Replace all occurences of substring
+STRING="to be or not to be"
+echo ${STRING[@]//be/eat}	# to eat or not to eat
+
+#Delete all occurences of substring (replace with empty string)
+STRING="to be or not to be"
+echo ${STRING[@]// not/}
+
+#Replace occurence of substring if at the beginning of $STRING
+STRING="to be or not to be"
+echo ${STRING[@]/#to be/eat now}
+
+#Replace occurence of substring if at the end of $STRING
+STRING="to be or not to be"
+echo ${STRING[@]/%be/eat}
+
+#Replace occurence of substring with shell command output
+STRING="to be or not to be"
+echo ${STRING[@]/%be/be on $(date +%Y-%m-%d)}	# to be or not to be on 2018-04-07
+
