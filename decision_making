@@ -1,0 +1,61 @@
+#!/usr/bin/bash
+#Decision Making
+
+# if then expressions
+NAME="John"
+#$1 is the first parameter
+if [ "$1" = "John" ]; then
+	echo "True - my name is indeed John"
+elif [ "$1" = "David" ]; then
+	echo "David Turner"
+elif [ "$1" = "Apples are red" ]; then
+	echo "Passphrase is correct"
+elif [[ "$1" -ge 10 ]]; then
+	echo "$1 is greater than 10"
+else
+	echo "False"
+	echo "You must mistaken me for $1"
+fi
+
+#Types of numeric comparisons
+a=10
+b=12
+
+# Any conditional expressions should be surrounded by double brackets [[]]
+
+if [[ $a -lt $b ]]; then
+	echo "$a is LESS than $b"
+elif [[ $a -gt $b ]]; then
+	echo "$a is GREATER than $b"
+elif [[ $a -le $b ]]; then
+	echo "$a is LESS than or EQUAL to $b"
+elif [[ $a -ge $b ]]; then
+	echo "$a is GREATER than or EQUAL to $b"
+elif [[ $a -eq $b ]]; then
+	echo "$a is EQUAL to $b"
+elif [[ $a -ne $b ]]; then
+	echo "$a is NOT EQUAL to $b"
+fi
+
+# Case Structure
+
+: 'case "$variable" in 
+	"$condition1" )
+		command....
+	;;
+	"$condition2" )
+		command...
+	;;
+   esac'
+
+# Simple Case Bash Structure
+mycase=1
+case $mycase in 
+	1) echo "You selected bash";;
+	2) echo "You selected perl";;
+	3) echo "You selected python";;
+	4) echo "You selected c++";;
+	5) exit
+esac
+
+
